@@ -1,0 +1,33 @@
+{
+  "mcpServers": {
+    "erp-1c": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "--quiet", "${ONEC_SRC_DIR}/erp_mcp.py"],
+      "env": {
+        "ONEC_SRC_DIR": "${ONEC_SRC_DIR}"
+      }
+    },
+    "bsl-platform": {
+      "type": "stdio",
+      "command": "java",
+      "args": [
+        "-Dfile.encoding=UTF-8",
+        "-jar",
+        "${BSL_PLATFORM_JAR}",
+        "--platform-path",
+        "${ONEC_PLATFORM_PATH}"
+      ],
+      "env": {}
+    },
+    "bsl-ls": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "--quiet", "${BSL_LS_MCP}"],
+      "env": {
+        "BSL_JAR": "${BSL_JAR}",
+        "BSL_MEMORY_MB": "${BSL_MEMORY_MB:-4096}"
+      }
+    }
+  }
+}

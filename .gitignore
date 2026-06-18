@@ -1,0 +1,14 @@
+# Секреты — НИКОГДА в репозиторий
+*token*
+*secret*
+*.key
+.env
+.env.*
+credentials*.json
+
+# Локальное окружение
+.mcp.json
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
