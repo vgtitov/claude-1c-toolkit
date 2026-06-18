@@ -1,0 +1,15 @@
+# Центральный erp-1c MCP по HTTP. Подними один раз — несколько разработчиков читают код через него.
+# ONEC_SRC_DIR — каталог с клонами конфигураций/расширений 1С (на хосте). Монтируется read-only.
+services:
+  erp-1c:
+    build: .
+    image: claude-1c-toolkit/erp-1c:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - "${ONEC_SRC_DIR:-./src}:/src:ro"
+    environment:
+      MCP_TRANSPORT: sse
+      MCP_HOST: 0.0.0.0
+      MCP_PORT: "8000"
+    restart: unless-stopped
